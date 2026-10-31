@@ -27,12 +27,12 @@
       <section class="view active" id="view-home">
         <div class="welcome-row">
           <div>
-            <p class="eyebrow" id="todayLabel">Τρίτη, 15 Απριλίου 2025</p>
-            <h1>Καλημέρα! <span>☀️</span></h1>
+            <p class="eyebrow" id="todayLabel"></p>
+            <h1 id="welcomeTitle">Καλημέρα! <span>☀️</span></h1>
             <p class="muted">Ας κάνουμε τη σημερινή μέρα να μετρήσει.</p>
           </div>
-          <div class="progress-ring" style="--progress:50%">
-            <div><strong id="progressCount">3/6</strong><small>Εργασίες</small></div>
+          <div class="progress-ring" style="--progress:0%">
+            <div><strong id="progressCount">0/0</strong><small>Εργασίες</small></div>
           </div>
         </div>
 
@@ -43,24 +43,24 @@
         </div>
 
         <div class="stat-grid">
-          <button class="stat-card" data-goto="tasks"><span class="stat-icon orange">✓</span><strong id="taskStat">5</strong><small>Εργασίες</small></button>
-          <button class="stat-card" data-goto="calendar"><span class="stat-icon blue">▦</span><strong id="meetingStat">2</strong><small>Ραντεβού</small></button>
-          <button class="stat-card" data-goto="projects"><span class="stat-icon red">▣</span><strong id="projectStat">4</strong><small>Projects</small></button>
+          <button class="stat-card" data-goto="tasks"><span class="stat-icon orange">✓</span><strong id="taskStat">0</strong><small>Εργασίες</small></button>
+          <button class="stat-card" data-goto="calendar"><span class="stat-icon blue">▦</span><strong id="meetingStat">0</strong><small>Ραντεβού</small></button>
+          <button class="stat-card" data-goto="projects"><span class="stat-icon red">▣</span><strong id="projectStat">0</strong><small>Projects</small></button>
         </div>
 
         <div class="section-heading"><div><span class="section-kicker">Σήμερα</span><h2>Ημερήσιο πρόγραμμα</h2></div><button class="text-button" data-goto="calendar">Προβολή όλων ↗</button></div>
         <div class="timeline-card" id="homeSchedule"></div>
         <div class="section-heading compact"><div><span class="section-kicker">Στόχος ημέρας</span><h2>Μικρά βήματα, μεγάλη πρόοδος</h2></div></div>
-        <div class="goal-card"><div class="goal-icon">✧</div><div class="goal-copy"><strong>Κράτα τον ρυθμό σου</strong><p>Ολοκλήρωσε τις σημαντικότερες εργασίες πριν το μεσημέρι.</p><div class="thin-progress"><span id="goalProgress"></span></div></div><span class="goal-percent" id="goalPercent">50%</span></div>
+        <div class="goal-card"><div class="goal-icon">✧</div><div class="goal-copy"><strong>Κράτα τον ρυθμό σου</strong><p>Ολοκλήρωσε τις σημαντικότερες εργασίες πριν το μεσημέρι.</p><div class="thin-progress"><span id="goalProgress"></span></div></div><span class="goal-percent" id="goalPercent">0%</span></div>
       </section>
 
       <section class="view" id="view-calendar">
         <div class="page-title-row"><div><p class="eyebrow">Οργάνωσε τον χρόνο σου</p><h1>Ημερολόγιο</h1></div><button class="round-add" data-add="event">＋</button></div>
-        <div class="month-head"><button class="plain-icon" id="prevMonth">‹</button><h2 id="monthTitle">Απρίλιος 2025</h2><button class="plain-icon" id="nextMonth">›</button></div>
+        <div class="month-head"><button class="plain-icon" id="prevMonth">‹</button><h2 id="monthTitle"></h2><button class="plain-icon" id="nextMonth">›</button></div>
         <div class="weekday-row"><span>Δε</span><span>Τρ</span><span>Τε</span><span>Πε</span><span>Πα</span><span>Σα</span><span>Κυ</span></div>
         <div class="calendar-grid" id="calendarGrid"></div>
         <div class="segmented" id="calendarModes"><button class="selected" data-mode="day">Ημέρα</button><button data-mode="week">Εβδομάδα</button><button data-mode="month">Μήνας</button></div>
-        <div class="section-heading"><div><span class="section-kicker" id="selectedDateLabel">15 Απριλίου</span><h2 id="calendarAgendaTitle">Πρόγραμμα ημέρας</h2></div><button class="text-button" data-add="event">+ Νέο</button></div>
+        <div class="section-heading"><div><span class="section-kicker" id="selectedDateLabel"></span><h2 id="calendarAgendaTitle">Πρόγραμμα ημέρας</h2></div><button class="text-button" data-add="event">+ Νέο</button></div>
         <div class="agenda-list" id="calendarAgenda"></div>
       </section>
 
@@ -71,13 +71,6 @@
         <div id="taskList" class="task-groups"></div>
       </section>
 
-      <section class="view" id="view-clients">
-        <div class="page-title-row"><div><p class="eyebrow">Οι επαγγελματικές σου σχέσεις</p><h1>Πελάτες</h1></div><button class="round-add" data-add="client">＋</button></div>
-        <label class="search-box"><span>⌕</span><input id="clientSearch" placeholder="Αναζήτηση πελατών..."></label>
-        <div class="filter-pills" id="clientFilters"><button class="selected" data-filter="all">Όλοι</button><button data-filter="active">Ενεργοί</button><button data-filter="prospect">Προοπτικοί</button></div>
-        <div class="client-list" id="clientList"></div>
-      </section>
-
       <section class="view" id="view-projects">
         <div class="page-title-row"><div><p class="eyebrow">Από την ιδέα στην υλοποίηση</p><h1>Projects</h1></div><button class="round-add" data-add="project">＋</button></div>
         <div class="filter-pills" id="projectFilters"><button class="selected" data-filter="all">Όλα</button><button data-filter="progress">Σε εξέλιξη</button><button data-filter="done">Ολοκληρωμένα</button></div>
@@ -86,10 +79,37 @@
 
       <section class="view" id="view-settings">
         <div class="page-title-row"><div><p class="eyebrow">Προσαρμοσμένο σε εσένα</p><h1>Ρυθμίσεις</h1></div><div class="settings-seal">✦</div></div>
-        <div class="settings-card"><h3>Εμφάνιση</h3><div class="setting-row"><span>Χρώμα εφαρμογής</span><span class="swatch"></span><select id="themeSelect"><option value="forest">Κυπαρισσί</option><option value="olive">Ελιά</option><option value="burgundy">Μπορντό</option></select></div><div class="setting-row"><span>Συμπαγής προβολή</span><label class="switch"><input id="compactToggle" type="checkbox"><span></span></label></div></div>
+
+        <div class="settings-card profile-settings-card">
+          <h3>Προσωπικό προφίλ</h3>
+          <div class="profile-editor">
+            <div class="profile-photo-wrap"><div class="profile-photo-preview" id="profilePhotoPreview">D</div><label class="photo-upload-button" for="profilePhotoInput">＋ Φωτογραφία</label><input id="profilePhotoInput" type="file" accept="image/*" class="visually-hidden"></div>
+            <p class="settings-note">Η φωτογραφία και τα στοιχεία προφίλ αποθηκεύονται σε αυτή τη συσκευή.</p>
+          </div>
+          <form id="profileForm">
+            <label class="field-label">Όνομα εμφάνισης<input id="profileName" maxlength="60" placeholder="π.χ. Αλέξανδρος"></label>
+            <label class="field-label">Ιδιότητα / Επάγγελμα<input id="profileRole" maxlength="80" placeholder="π.χ. Creative Director"></label>
+            <label class="field-label">Email<input id="profileEmail" type="email" maxlength="120" placeholder="name@example.com"></label>
+            <label class="field-label">Σύντομη περιγραφή<textarea id="profileBio" rows="2" maxlength="240" placeholder="Λίγα λόγια για εσένα..."></textarea></label>
+            <button class="primary-button" type="submit">Αποθήκευση προφίλ <span>↗</span></button>
+          </form>
+        </div>
+
+        <div class="settings-card"><h3>Εμφάνιση</h3>
+          <div class="setting-row"><span>Χρωματική παλέτα</span><span class="swatch" id="themeSwatch"></span><select id="themeSelect"><option value="forest">Cypress &amp; Antique Gold</option><option value="olive">Olive &amp; Linen</option><option value="burgundy">Burgundy &amp; Champagne</option><option value="navy">Midnight Navy</option></select></div>
+          <div class="palette-preview-grid" aria-label="Προεπισκόπηση χρωματικών παλετών">
+            <button class="palette-chip selected" data-theme="forest" aria-label="Cypress & Antique Gold"><i style="--chip:#102e25"></i><i style="--chip:#b79b61"></i><i style="--chip:#f6f1e6"></i><small>Cypress</small></button>
+            <button class="palette-chip" data-theme="olive" aria-label="Olive & Linen"><i style="--chip:#424d2f"></i><i style="--chip:#b7a05e"></i><i style="--chip:#f3efe2"></i><small>Olive</small></button>
+            <button class="palette-chip" data-theme="burgundy" aria-label="Burgundy & Champagne"><i style="--chip:#48252e"></i><i style="--chip:#c3a06b"></i><i style="--chip:#f7eee6"></i><small>Burgundy</small></button>
+            <button class="palette-chip" data-theme="navy" aria-label="Midnight Navy"><i style="--chip:#172a43"></i><i style="--chip:#b9a77a"></i><i style="--chip:#eef2f5"></i><small>Navy</small></button>
+          </div>
+          <div class="setting-row"><span>Συμπαγής προβολή</span><label class="switch"><input id="compactToggle" type="checkbox"><span></span></label></div>
+        </div>
+
         <div class="settings-card"><h3>Υπενθυμίσεις</h3><div class="setting-row"><span>Υπενθυμίσεις εργασιών</span><label class="switch"><input type="checkbox" checked><span></span></label></div><div class="setting-row"><span>Υπενθυμίσεις ραντεβού</span><label class="switch"><input type="checkbox" checked><span></span></label></div><div class="setting-row"><span>Ημερήσια σύνοψη</span><label class="switch"><input type="checkbox"><span></span></label></div><p class="settings-note">Οι ειδοποιήσεις συστήματος χρειάζονται άδεια από τη συσκευή και υποστήριξη από τον browser.</p></div>
-        <div class="settings-card"><h3>Τα δεδομένα σου</h3><button class="setting-action" id="exportBtn"><span>⇩</span><span><strong>Εξαγωγή δεδομένων</strong><small>Αποθήκευση αντιγράφου JSON</small></span><b>›</b></button><label class="setting-action import-action"><span>⇧</span><span><strong>Εισαγωγή δεδομένων</strong><small>Επαναφορά από αντίγραφο</small></span><b>›</b><input id="importInput" type="file" accept="application/json"></label><button class="setting-action danger" id="resetBtn"><span>⌫</span><span><strong>Επαναφορά demo δεδομένων</strong><small>Επαναφέρει τα αρχικά παραδείγματα</small></span><b>›</b></button></div>
-        <p class="app-version">DAYFLOW · YOUR DAY, WITH PURPOSE · v0.2</p>
+
+        <div class="settings-card"><h3>Τα δεδομένα σου</h3><button class="setting-action" id="exportBtn"><span>⇩</span><span><strong>Εξαγωγή δεδομένων</strong><small>Αποθήκευση αντιγράφου JSON</small></span><b>›</b></button><label class="setting-action import-action"><span>⇧</span><span><strong>Εισαγωγή δεδομένων</strong><small>Επαναφορά από αντίγραφο</small></span><b>›</b><input id="importInput" type="file" accept="application/json"></label></div>
+        <p class="app-version">DAYFLOW · YOUR DAY, WITH PURPOSE · v0.3</p>
       </section>
     </main>
 
@@ -98,7 +118,7 @@
       <button class="nav-item" data-view="calendar"><span class="nav-glyph">▦</span><small>Ημερολόγιο</small></button>
       <button class="nav-add" id="quickAdd" aria-label="Προσθήκη">＋</button>
       <button class="nav-item" data-view="tasks"><span class="nav-glyph">☑</span><small>Εργασίες</small></button>
-      <button class="nav-item" data-view="clients"><span class="nav-glyph">♙</span><small>Πελάτες</small></button>
+      <button class="nav-item" data-view="projects"><span class="nav-glyph">▣</span><small>Projects</small></button>
     </nav>
   </div>
 
@@ -110,9 +130,10 @@
         <input type="hidden" id="entryType">
         <label class="field-label">Τίτλος<input id="entryTitle" required maxlength="100" placeholder="π.χ. Προετοιμασία παρουσίασης"></label>
         <label class="field-label">Περιγραφή<textarea id="entryDescription" rows="2" placeholder="Πρόσθεσε λεπτομέρειες..."></textarea></label>
+        <label class="field-label" id="entryClientWrap">Πελάτης (προαιρετικό)<input id="entryClient" list="clientSuggestions" maxlength="100" placeholder="Γράψε ή επίλεξε πελάτη"><datalist id="clientSuggestions"></datalist></label>
         <div class="field-pair"><label class="field-label">Ημερομηνία<input id="entryDate" type="date" required></label><label class="field-label">Ώρα<input id="entryTime" type="time" value="10:00"></label></div>
         <div class="field-pair"><label class="field-label">Προτεραιότητα<select id="entryPriority"><option value="medium">Μεσαία</option><option value="high">Υψηλή</option><option value="low">Χαμηλή</option></select></label><label class="field-label">Κατηγορία<select id="entryCategory"><option>Εργασία</option><option>Προσωπικά</option><option>Συνάντηση</option><option>Οικονομικά</option><option>Υγεία</option></select></label></div>
-        <label class="field-label">Υπενθύμιση<select id="entryReminder"><option value="none">Χωρίς υπενθύμιση</option><option value="10">10 λεπτά πριν</option><option value="30">30 λεπτά πριν</option><option value="60">1 ώρα πριν</option></select></label>
+        <label class="field-label" id="reminderWrap">Υπενθύμιση<select id="entryReminder"><option value="none">Χωρίς υπενθύμιση</option><option value="10">10 λεπτά πριν</option><option value="30">30 λεπτά πριν</option><option value="60">1 ώρα πριν</option></select></label>
         <button class="primary-button" type="submit" id="saveEntry">Αποθήκευση καταχώρισης <span>↗</span></button>
       </form>
     </section>
