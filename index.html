@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#102e25">
+  <meta name="description" content="DayFlow — προσωπική και επαγγελματική οργάνωση">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>DayFlow</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="brand">DayFlow<span>®</span></div>
+        <div class="brand-sub">Your day, with purpose.</div>
+      </div>
+      <div class="top-actions">
+        <button class="icon-button" id="notificationsBtn" aria-label="Ειδοποιήσεις">♧<i class="notification-dot"></i></button>
+        <button class="avatar" id="profileBtn" aria-label="Προφίλ">D</button>
+      </div>
+    </header>
+
+    <main id="mainContent">
+      <section class="view active" id="view-home">
+        <div class="welcome-row">
+          <div>
+            <p class="eyebrow" id="todayLabel">Τρίτη, 15 Απριλίου 2025</p>
+            <h1>Καλημέρα! <span>☀️</span></h1>
+            <p class="muted">Ας κάνουμε τη σημερινή μέρα να μετρήσει.</p>
+          </div>
+          <div class="progress-ring" style="--progress:50%">
+            <div><strong id="progressCount">3/6</strong><small>Εργασίες</small></div>
+          </div>
+        </div>
+
+        <div class="quote-card">
+          <span class="quote-mark">“</span>
+          <p>Πειθαρχία σήμερα,<br>ελευθερία αύριο.</p>
+          <span class="quote-gold">✦</span>
+        </div>
+
+        <div class="stat-grid">
+          <button class="stat-card" data-goto="tasks"><span class="stat-icon orange">✓</span><strong id="taskStat">5</strong><small>Εργασίες</small></button>
+          <button class="stat-card" data-goto="calendar"><span class="stat-icon blue">▦</span><strong id="meetingStat">2</strong><small>Ραντεβού</small></button>
+          <button class="stat-card" data-goto="projects"><span class="stat-icon red">▣</span><strong id="projectStat">4</strong><small>Projects</small></button>
+        </div>
+
+        <div class="section-heading"><div><span class="section-kicker">Σήμερα</span><h2>Ημερήσιο πρόγραμμα</h2></div><button class="text-button" data-goto="calendar">Προβολή όλων ↗</button></div>
+        <div class="timeline-card" id="homeSchedule"></div>
+        <div class="section-heading compact"><div><span class="section-kicker">Στόχος ημέρας</span><h2>Μικρά βήματα, μεγάλη πρόοδος</h2></div></div>
+        <div class="goal-card"><div class="goal-icon">✧</div><div class="goal-copy"><strong>Κράτα τον ρυθμό σου</strong><p>Ολοκλήρωσε τις σημαντικότερες εργασίες πριν το μεσημέρι.</p><div class="thin-progress"><span id="goalProgress"></span></div></div><span class="goal-percent" id="goalPercent">50%</span></div>
+      </section>
+
+      <section class="view" id="view-calendar">
+        <div class="page-title-row"><div><p class="eyebrow">Οργάνωσε τον χρόνο σου</p><h1>Ημερολόγιο</h1></div><button class="round-add" data-add="event">＋</button></div>
+        <div class="month-head"><button class="plain-icon" id="prevMonth">‹</button><h2 id="monthTitle">Απρίλιος 2025</h2><button class="plain-icon" id="nextMonth">›</button></div>
+        <div class="weekday-row"><span>Δε</span><span>Τρ</span><span>Τε</span><span>Πε</span><span>Πα</span><span>Σα</span><span>Κυ</span></div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+        <div class="segmented" id="calendarModes"><button class="selected" data-mode="day">Ημέρα</button><button data-mode="week">Εβδομάδα</button><button data-mode="month">Μήνας</button></div>
+        <div class="section-heading"><div><span class="section-kicker" id="selectedDateLabel">15 Απριλίου</span><h2 id="calendarAgendaTitle">Πρόγραμμα ημέρας</h2></div><button class="text-button" data-add="event">+ Νέο</button></div>
+        <div class="agenda-list" id="calendarAgenda"></div>
+      </section>
+
+      <section class="view" id="view-tasks">
+        <div class="page-title-row"><div><p class="eyebrow">Συγκεντρώσου σε όσα μετρούν</p><h1>Εργασίες</h1></div><button class="round-add" data-add="task">＋</button></div>
+        <div class="filter-pills" id="taskFilters"><button class="selected" data-filter="all">Όλες</button><button data-filter="today">Σημερινές</button><button data-filter="progress">Σε εξέλιξη</button><button data-filter="done">Ολοκληρωμένες</button></div>
+        <label class="search-box"><span>⌕</span><input id="taskSearch" placeholder="Αναζήτηση εργασιών..."><button id="clearSearch" aria-label="Καθαρισμός">×</button></label>
+        <div id="taskList" class="task-groups"></div>
+      </section>
+
+      <section class="view" id="view-clients">
+        <div class="page-title-row"><div><p class="eyebrow">Οι επαγγελματικές σου σχέσεις</p><h1>Πελάτες</h1></div><button class="round-add" data-add="client">＋</button></div>
+        <label class="search-box"><span>⌕</span><input id="clientSearch" placeholder="Αναζήτηση πελατών..."></label>
+        <div class="filter-pills" id="clientFilters"><button class="selected" data-filter="all">Όλοι</button><button data-filter="active">Ενεργοί</button><button data-filter="prospect">Προοπτικοί</button></div>
+        <div class="client-list" id="clientList"></div>
+      </section>
+
+      <section class="view" id="view-projects">
+        <div class="page-title-row"><div><p class="eyebrow">Από την ιδέα στην υλοποίηση</p><h1>Projects</h1></div><button class="round-add" data-add="project">＋</button></div>
+        <div class="filter-pills" id="projectFilters"><button class="selected" data-filter="all">Όλα</button><button data-filter="progress">Σε εξέλιξη</button><button data-filter="done">Ολοκληρωμένα</button></div>
+        <div class="project-list" id="projectList"></div>
+      </section>
+
+      <section class="view" id="view-settings">
+        <div class="page-title-row"><div><p class="eyebrow">Προσαρμοσμένο σε εσένα</p><h1>Ρυθμίσεις</h1></div><div class="settings-seal">✦</div></div>
+        <div class="settings-card"><h3>Εμφάνιση</h3><div class="setting-row"><span>Χρώμα εφαρμογής</span><span class="swatch"></span><select id="themeSelect"><option value="forest">Κυπαρισσί</option><option value="olive">Ελιά</option><option value="burgundy">Μπορντό</option></select></div><div class="setting-row"><span>Συμπαγής προβολή</span><label class="switch"><input id="compactToggle" type="checkbox"><span></span></label></div></div>
+        <div class="settings-card"><h3>Υπενθυμίσεις</h3><div class="setting-row"><span>Υπενθυμίσεις εργασιών</span><label class="switch"><input type="checkbox" checked><span></span></label></div><div class="setting-row"><span>Υπενθυμίσεις ραντεβού</span><label class="switch"><input type="checkbox" checked><span></span></label></div><div class="setting-row"><span>Ημερήσια σύνοψη</span><label class="switch"><input type="checkbox"><span></span></label></div><p class="settings-note">Οι ειδοποιήσεις συστήματος χρειάζονται άδεια από τη συσκευή και υποστήριξη από τον browser.</p></div>
+        <div class="settings-card"><h3>Τα δεδομένα σου</h3><button class="setting-action" id="exportBtn"><span>⇩</span><span><strong>Εξαγωγή δεδομένων</strong><small>Αποθήκευση αντιγράφου JSON</small></span><b>›</b></button><label class="setting-action import-action"><span>⇧</span><span><strong>Εισαγωγή δεδομένων</strong><small>Επαναφορά από αντίγραφο</small></span><b>›</b><input id="importInput" type="file" accept="application/json"></label><button class="setting-action danger" id="resetBtn"><span>⌫</span><span><strong>Επαναφορά demo δεδομένων</strong><small>Επαναφέρει τα αρχικά παραδείγματα</small></span><b>›</b></button></div>
+        <p class="app-version">DAYFLOW · YOUR DAY, WITH PURPOSE · v0.2</p>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Κύρια πλοήγηση">
+      <button class="nav-item active" data-view="home"><span class="nav-glyph">⌂</span><small>Αρχική</small></button>
+      <button class="nav-item" data-view="calendar"><span class="nav-glyph">▦</span><small>Ημερολόγιο</small></button>
+      <button class="nav-add" id="quickAdd" aria-label="Προσθήκη">＋</button>
+      <button class="nav-item" data-view="tasks"><span class="nav-glyph">☑</span><small>Εργασίες</small></button>
+      <button class="nav-item" data-view="clients"><span class="nav-glyph">♙</span><small>Πελάτες</small></button>
+    </nav>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <section class="modal-sheet" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="sheet-handle"></div>
+      <div class="modal-heading"><div><p class="eyebrow" id="modalEyebrow">DAYFLOW · ΝΕΑ ΚΑΤΑΧΩΡΙΣΗ</p><h2 id="modalTitle">Νέα εργασία</h2></div><button class="plain-icon" id="closeModal" aria-label="Κλείσιμο">×</button></div>
+      <form id="entryForm">
+        <input type="hidden" id="entryType">
+        <label class="field-label">Τίτλος<input id="entryTitle" required maxlength="100" placeholder="π.χ. Προετοιμασία παρουσίασης"></label>
+        <label class="field-label">Περιγραφή<textarea id="entryDescription" rows="2" placeholder="Πρόσθεσε λεπτομέρειες..."></textarea></label>
+        <div class="field-pair"><label class="field-label">Ημερομηνία<input id="entryDate" type="date" required></label><label class="field-label">Ώρα<input id="entryTime" type="time" value="10:00"></label></div>
+        <div class="field-pair"><label class="field-label">Προτεραιότητα<select id="entryPriority"><option value="medium">Μεσαία</option><option value="high">Υψηλή</option><option value="low">Χαμηλή</option></select></label><label class="field-label">Κατηγορία<select id="entryCategory"><option>Εργασία</option><option>Προσωπικά</option><option>Συνάντηση</option><option>Οικονομικά</option><option>Υγεία</option></select></label></div>
+        <label class="field-label">Υπενθύμιση<select id="entryReminder"><option value="none">Χωρίς υπενθύμιση</option><option value="10">10 λεπτά πριν</option><option value="30">30 λεπτά πριν</option><option value="60">1 ώρα πριν</option></select></label>
+        <button class="primary-button" type="submit" id="saveEntry">Αποθήκευση καταχώρισης <span>↗</span></button>
+      </form>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>

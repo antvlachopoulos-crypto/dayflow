@@ -1,0 +1,14 @@
+{
+  "name": "DayFlow — Your day, with purpose",
+  "short_name": "DayFlow",
+  "description": "Προσωπική και επαγγελματική οργάνωση με αισθητική old money.",
+  "lang": "el",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f1e6",
+  "theme_color": "#102e25",
+  "icons": [
+    {"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
